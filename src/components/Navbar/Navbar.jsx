@@ -7,6 +7,8 @@ import { useState } from "react";
 import defaultProfileImage from "../../assets/profile/403022_business man_male_user_avatar_profile_icon.png";
 import ProfileWithDropdown from "../ProfileWithDropdown/ProfileWithDropdown";
 import Profile from "../Profile/Profile";
+import DesktopLink from "../NavLink/DesktopLink/DesktopLink";
+import MobileLink from "../NavLink/DesktopLink/MobileLink";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +25,7 @@ const Navbar = () => {
           <Profile image={defaultProfileImage} />
         </div>
         {/* menu items */}
-        <div>menus</div>
+        <DesktopLink />
       </div>
       {/* small screen */}
       <div className="h-[70px] bg-slate-200 w-full flex sm:flex md:flex lg:hidden">
@@ -63,7 +65,7 @@ const Navbar = () => {
           </button>
         </div>
         <div className="flex-grow flex flex-col justify-center items-center space-y-4 text-white">
-          Menus
+          <MobileLink />
         </div>
       </div>
     </>
