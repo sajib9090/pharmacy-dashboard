@@ -14,36 +14,32 @@ export const authOptions = {
         password: {},
       },
       async authorize(credentials) {
-        try {
-          const { email, password } = credentials || {};
+        const { email, password } = credentials || {};
 
-          if (!email || !password) {
-            throw new Error("Please fill in both email and password.");
-          }
-
-          const db = await connectDB();
-          if (!db) {
-            throw new Error("Failed to connect to the database");
-          }
-
-          const usersCollection = await db.collection("users");
-          const existingUser = await usersCollection.findOne({ email });
-          if (!existingUser) {
-            throw new Error("User not found");
-          }
-
-          const isPasswordValid = await bcrypt.compare(
-            password,
-            existingUser?.password
-          );
-          if (!isPasswordValid) {
-            throw new Error("Password is incorrect.");
-          }
-
-          return existingUser;
-        } catch (error) {
-          throw new Error("Authentication failed.");
+        if (!email || !password) {
+          throw new Error("Please fill in both email and password.");
         }
+
+        const db = await connectDB();
+        if (!db) {
+          throw new Error("Failed to connect to the database");
+        }
+
+        const usersCollection = await db.collection("users");
+        const existingUser = await usersCollection.findOne({ email });
+        if (!existingUser) {
+          throw new Error("User not found");
+        }
+
+        const isPasswordValid = await bcrypt.compare(
+          password,
+          existingUser?.password
+        );
+        if (!isPasswordValid) {
+          throw new Error("Password is incorrect.");
+        }
+
+        return existingUser;
       },
     }),
   ],

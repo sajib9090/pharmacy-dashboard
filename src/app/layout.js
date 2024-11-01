@@ -36,7 +36,7 @@ export default async function RootLayout({ children }) {
                 <Footer />
               </div>
             </div>
-            <div>{children}</div>
+            <div className="w-full">{children}</div>
             <div className="lg:hidden block">
               <Footer />
             </div>

@@ -11,7 +11,7 @@ export const POST = async (req) => {
     }
 
     const cleanedName = name?.trim().toLowerCase();
-    if (cleanedName.length < 3) {
+    if (cleanedName?.length < 3) {
       return new NextResponse("Name must be at least 3 characters long", {
         status: 400,
       });
