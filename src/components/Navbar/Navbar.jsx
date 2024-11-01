@@ -9,8 +9,10 @@ import ProfileWithDropdown from "../ProfileWithDropdown/ProfileWithDropdown";
 import Profile from "../Profile/Profile";
 import DesktopLink from "../NavLink/DesktopLink/DesktopLink";
 import MobileLink from "../NavLink/DesktopLink/MobileLink";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
+  const session = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {
@@ -22,10 +24,10 @@ const Navbar = () => {
       {/* large screen */}
       <div className="w-[256px] bg-slate-100 min-h-screen hidden sm:hidden md:hidden lg:block shadow">
         <div className="flex items-center justify-center pt-6">
-          <Profile image={defaultProfileImage} />
+          <Profile session={session} image={defaultProfileImage} />
         </div>
         {/* menu items */}
-        <DesktopLink />
+        <DesktopLink session={session} />
       </div>
       {/* small screen */}
       <div className="h-[70px] bg-slate-200 w-full flex sm:flex md:flex lg:hidden">

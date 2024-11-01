@@ -1,7 +1,11 @@
 import Image from "next/image";
 import defaultLogo from "../../assets/logo/png-transparent-blue-capsule-com-removebg-preview.png";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/utils/actions/authOptions";
 
-const Header = () => {
+const Header = async () => {
+  const session = await getServerSession(authOptions);
+  console.log(session);
   return (
     <div className="h-[80px] hidden sm:hidden md:hidden lg:flex">
       <div className="bg-slate-200 w-[256px] flex items-center justify-between px-10 shadow">
