@@ -52,7 +52,6 @@ export const authOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-    
       if (user) {
         token.id = user._id;
         token.email = user.email;
@@ -72,5 +71,5 @@ export const authOptions = {
       return session;
     },
   },
-  secret: "process.env.NEXTAUTH_SECRET",
+  secret: process.env.NEXTAUTH_SECRET,
 };
