@@ -49,7 +49,7 @@ const Navbar = () => {
             </div>
           </div>
           <div>
-            <ProfileWithDropdown image={defaultProfileImage} />
+            <ProfileWithDropdown image={defaultProfileImage} session={session} />
           </div>
         </div>
       </div>

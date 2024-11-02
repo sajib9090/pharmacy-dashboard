@@ -1,8 +1,9 @@
 "use client";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
 
-const ProfileWithDropdown = ({ image }) => {
+const ProfileWithDropdown = ({ image, session }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -23,6 +24,15 @@ const ProfileWithDropdown = ({ image }) => {
 
       {dropdownOpen && (
         <div className="absolute mt-2 w-[150px] bg-white border border-gray-200 rounded shadow-lg z-10 right-1">
+          <div className="py-2 px-4">
+            <p className="font-semibold capitalize">
+              {session?.data?.user?.name || "Name"}
+            </p>
+            <p className="text-yellow-500 font-semibold text-[12px]">
+              {session?.data?.user?.role || "Role"}
+            </p>
+          </div>
+
           <ul className="py-2">
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
               Profile
@@ -30,7 +40,10 @@ const ProfileWithDropdown = ({ image }) => {
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
               Settings
             </li>
-            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+            <li
+              onClick={() => signOut()}
+              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+            >
               Logout
             </li>
           </ul>

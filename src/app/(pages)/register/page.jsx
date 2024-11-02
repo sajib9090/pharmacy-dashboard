@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import axiosInstance from "@/app/lib/axiosConfig";
+import Link from "next/link";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -120,9 +121,9 @@ const RegisterPage = () => {
         </form>
         <p className="text-center text-gray-500 text-sm">
           Already have an account?{" "}
-          <a href="/login" className="text-indigo-500 hover:underline">
+          <Link href="/login" className="text-indigo-500 hover:underline">
             Sign in
-          </a>
+          </Link>
         </p>
       </div>
     </div>
